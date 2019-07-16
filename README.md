@@ -67,6 +67,32 @@ You are working on a game in which your character is exploring a grid-like map. 
 
 ```
 // your code here
+```
+enum Direction {
+case up
+case down
+case left
+case right
+}
+
+var location = (x: 0, y: 0)
+var steps: [Direction] = [.up, .up, .left, .down, .left]
+
+for direction in steps {
+print("The current location is set at x: \(location.x) and y:\(location.y)")
+print("I am about to go \(direction)")
+switch direction {
+case .up:
+location.y += 1
+case .down:
+location.y -= 1
+case .left:
+location.x -= 1
+case .right:
+location.x += 1
+}
+}
+```
 
 
 swift
