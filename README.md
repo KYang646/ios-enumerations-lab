@@ -6,15 +6,46 @@ Fork and clone this repo. On your fork, answer and commit the follow questions. 
 ## Question 1
 
 a) Define an enumeration called `iOSDeviceType` with member values `iPhone`, `iPad`, `iWatch`. Create a variable called `myDevice` and assign it one member value.
+```
+enum iOSDeviceType {
+
+case iPhone, iPad, iWatch
+
+}
+
+let myDevice = iOSDeviceType.iPhone
+print(myDevice)
+```
+
 
 b) Adjust your code above so that `iPhone` and `iPad` have associated values of type String which represents the model number, eg: `iPhone("6 Plus")`. Use a switch case and let syntax to print out the model number of each device.
+```
+enum iOSDeviceType: String {
+
+case iPhone = "iPhone 6 Plus", iPad = "iPad Pro", iWatch = "iWatch 4"
+
+}
+
+let myDevice = iOSDeviceType.iPhone
+print(myDevice)
+```
 
 
 ## Question 2
 
 a) Write an enum called `Shape` and give it cases for `triangle`, `rectangle`, `square`, `pentagon`, and `hexagon`.
+```
+enum Shape {
+case triangle, rectangle, square, pentagon, hexagon
+}
+```
 
 b) Write a method inside `Shape` that returns how many sides the shape has. Create a variable called `myFavoritePolygon` and assign it to one of the shapes above, then print out how many sides it has.
+```
+enum Shape: Int {
+case triangle = 3, rectangle = 4, square = 8, pentagon = 5, hexagon = 6
+print("My favorite "
+```
 
 c) Re-write `Shape` so that each case has an associated value of type Int that will represent the length of the sides (assume the shapes are regular polygons so all the sides are the same length) and write a method inside that returns the perimeter of the shape.
 
@@ -34,30 +65,71 @@ You are working on a game in which your character is exploring a grid-like map. 
 - A step .left will decrease the x coordinate by 1.
 - Print the final location of the character after all the steps have been taken.
 
-```swift
+```
+// your code here
+
+
+swift
 enum Direction {
-    case up
-    case down
-    case left
-    case right
+case up
+case down
+case left
+case right
 }
 
 var location = (x: 0, y: 0)
 var steps: [Direction] = [.up, .up, .left, .down, .left]
 
-// your code here
 ```
 
 
 ## Question 5
 
 a) Define an enumeration named `HandShape` with three members: `.rock`, `.paper`, `.scissors`.
+```
+enum HandShape {
+case rock
+case paper
+case scissor
+}
+```
 
 b) Define an enumeration named `MatchResult` with three members: `.win`, `.draw`, `.lose`.
+```
+enum MatchResult {
+case win
+case draw
+case lose
+}
+```
 
 c) Write a function called `match` that takes two `HandShapes` and returns a `MatchResult`. It should return the outcome for the first player (the one with the first hand shape).
 
 Hint: Rock beats scissors, paper beats rock, scissor beats paper
+```
+func match(firstShape: HandShape, secondShape: HandShape) -> MatchResult {
+switch firstShape {
+case .rock:
+switch secondShape {
+case .rock: return .draw
+case .paper: return .lose
+case .scissor: return .win
+}
+case .paper:
+switch secondShape {
+case .rock: return .win
+case .paper: return .draw
+case .scissor: return .lose
+}
+case .scissor:
+switch secondShape {
+case .rock: return .lose
+case .paper: return .win
+case .scissor: return .draw
+}
+}
+}
+```
 
 
 ## Question 6
@@ -66,18 +138,18 @@ a) You are given a `CoinType` enumeration which describes different coin values.
 
 ```swift
 enum CoinType: Int {
-    case penny = 1
-    case nickle = 5
-    case dime = 10
-    case quarter = 25
+case penny = 1
+case nickle = 5
+case dime = 10
+case quarter = 25
 }
 
 var moneyArray:[(Int,CoinType)] = [(10,.penny),
-                                   (15,.nickle),
-                                   (3,.quarter),
-                                   (20,.penny),
-                                   (3,.dime),
-                                   (7,.quarter)]
+(15,.nickle),
+(3,.quarter),
+(20,.penny),
+(3,.dime),
+(7,.quarter)]
 
 // your code here
 ```
